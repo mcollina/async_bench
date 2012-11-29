@@ -1,0 +1,30 @@
+{
+  "name": "mcbench",
+  "version": "0.0.0",
+  "description": "A benchmark framework designed for node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcollina/mcbench"
+  },
+  "keywords": [
+    "benchmark",
+    "bench",
+    "performance"
+  ],
+  "author": "Matteo Collina <hello@matteocollina.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.7.2",
+    "chai": "~1.4.0",
+    "sinon": "~1.5.2",
+    "sinon-chai": "~2.2.0"
+  },
+  "dependencies": {
+    "microtime": "~0.3.3",
+    "async": "~0.1.22"
+  }
+}
