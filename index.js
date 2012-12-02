@@ -1,6 +1,3 @@
-var fs = require("fs");
-var microtime = require("microtime");
-var util = require("util");
 var async = require("async");
 var math = require("./lib/math");
 var funcUtils = require("./lib/func_utils");
