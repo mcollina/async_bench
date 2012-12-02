@@ -51,6 +51,15 @@ describe(preHeatRunCounter, function () {
     });
   });
 
+  it("should call the reset function between the preheat the and the run", function(done) {
+    var func = sinon.spy();
+    var reset = sinon.spy();
+    preHeatRunCounter({ preHeat: 1, runs: 1, reset: funcUtils.wrap(reset), func: funcUtils.wrap(func) }, function() {
+      sinon.assert.callOrder(func, reset, func);
+      done();
+    });
+  });
+
   it("should forward an error", function(done) {
     var error = "this is an error";
     var func = function(cb) {
