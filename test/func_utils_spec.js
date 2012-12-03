@@ -11,6 +11,18 @@ describe(funcUtils, function () {
     });
   });
 
+  describe(funcUtils.always, function() {
+
+    it("should return the first arg if its is not null", function() {
+      var spy = sinon.spy(); 
+      expect(funcUtils.always(spy)).to.eql(spy);
+    });
+
+    it("should return the empty func if its is not null", function() {
+      expect(funcUtils.always(null)).to.eql(funcUtils.empty);
+    });
+  });
+
   describe(funcUtils.wrap, function() {
 
     it("should call the wrapped function", function() {
