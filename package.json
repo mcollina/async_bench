@@ -1,19 +1,20 @@
 {
-  "name": "mcbench",
+  "name": "async_bench",
   "version": "0.0.0",
-  "description": "A benchmark framework designed for node.js",
+  "description": "The benchmark framework designed for node.js callbacks.",
   "main": "index.js",
   "scripts": {
     "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcollina/mcbench"
+    "url": "https://github.com/mcollina/async_bench"
   },
   "keywords": [
     "benchmark",
     "bench",
-    "performance"
+    "performance",
+    "async"
   ],
   "author": "Matteo Collina <hello@matteocollina.com>",
   "license": "MIT",
