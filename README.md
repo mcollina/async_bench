@@ -1,4 +1,4 @@
-mcbench
+Async Bench
 =======
 
-A benchmark framework designed for node.js
+The benchmark framework designed for node.js callbacks.
