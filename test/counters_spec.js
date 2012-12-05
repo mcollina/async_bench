@@ -7,7 +7,7 @@ describe(runCounter, function () {
 
   it("should call a function x times", function(done) {
     var spy = sinon.spy();
-    runCounter({ runs: 5, func: funcUtils.wrap(spy) }, function() {
+    runCounter({ runs: 5, bench: funcUtils.wrap(spy) }, function() {
       expect(spy.callCount).to.equal(5); 
       done();
     });
@@ -15,7 +15,7 @@ describe(runCounter, function () {
 
   it("should call a function y times", function(done) {
     var spy = sinon.spy();
-    runCounter({ runs: 7, func: funcUtils.wrap(spy) }, function() {
+    runCounter({ runs: 7, bench: funcUtils.wrap(spy) }, function() {
       expect(spy.callCount).to.equal(7); 
       done();
     });
@@ -26,7 +26,7 @@ describe(runCounter, function () {
     var func = function(cb) {
       cb(error);
     };
-    runCounter({ runs: 7, func: func }, function(err) {
+    runCounter({ runs: 7, bench: func }, function(err) {
       expect(err).to.equal(error); 
       done();
     });
@@ -37,7 +37,7 @@ describe(preHeatRunCounter, function () {
 
   it("should call the function x times for preheat", function(done) {
     var func = sinon.spy();
-    preHeatRunCounter({ preHeat: 5, runs: 0, func: funcUtils.wrap(func) }, function() {
+    preHeatRunCounter({ preHeat: 5, runs: 0, bench: funcUtils.wrap(func) }, function() {
       expect(func.callCount).to.equal(5);
       done();
     });
@@ -45,7 +45,7 @@ describe(preHeatRunCounter, function () {
 
   it("should call the function y times for preheat", function(done) {
     var func = sinon.spy();
-    preHeatRunCounter({ preHeat: 7, runs: 0, func: funcUtils.wrap(func) }, function() {
+    preHeatRunCounter({ preHeat: 7, runs: 0, bench: funcUtils.wrap(func) }, function() {
       expect(func.callCount).to.equal(7);
       done();
     });
@@ -54,7 +54,7 @@ describe(preHeatRunCounter, function () {
   it("should call the reset function between the preheat the and the run", function(done) {
     var func = sinon.spy();
     var reset = sinon.spy();
-    preHeatRunCounter({ preHeat: 1, runs: 1, reset: funcUtils.wrap(reset), func: funcUtils.wrap(func) }, function() {
+    preHeatRunCounter({ preHeat: 1, runs: 1, reset: funcUtils.wrap(reset), bench: funcUtils.wrap(func) }, function() {
       sinon.assert.callOrder(func, reset, func);
       done();
     });
@@ -65,7 +65,7 @@ describe(preHeatRunCounter, function () {
     var func = function(cb) {
       cb(error);
     };
-    preHeatRunCounter({ preHeat: 1, runs: 7, func: func }, function(err) {
+    preHeatRunCounter({ preHeat: 1, runs: 7, bench: func }, function(err) {
       expect(err).to.equal(error);
       done();
     });

@@ -7,9 +7,10 @@ var Timer = require("./lib/timer");
 module.exports = function runner(opts) {
   var timer = Timer();
 
-  counters.preHeatRunCounter(opts, function(callback) {
-    async.waterfall(funcUtils.buildPipe(timer), callback);
-  }, function(err) {
+  var pipe = funcUtils.buildPipe(opts, timer);
+  opts.bench = async.apply(async.waterfall, pipe);
+
+  counters.preHeatRunCounter(opts, function(err) {
     funcUtils.always(opts.complete)(err, math.calculate(timer.results));
   });
 }
