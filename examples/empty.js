@@ -7,8 +7,7 @@ asyncbench({
   setup: function(cb) {
     cb();
   },
-  func: function(cb) { 
-    console.log(arguments);
+  bench: function(cb) { 
     cb(); 
   },
   complete: function(err, results) {
