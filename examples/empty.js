@@ -2,8 +2,8 @@
 var asyncbench = require("../");
 
 asyncbench({
-  runs: 10000,
-  preHeat: 1000,
+  runs: 100000,
+  preHeat: 10000,
   setup: function(cb) {
     cb();
   },

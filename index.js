@@ -1,8 +1,10 @@
 var async = require("async");
-var math = require("./lib/math");
 var funcUtils = require("./lib/func_utils");
 var counters = require("./lib/counters");
 var Timer = require("./lib/timer");
+var atoll = require("atoll");
+
+var statFunctions = ["mean", "stdDev", "median", "mode", "variance"];
 
 module.exports = function runner(opts) {
   var timer = Timer();
@@ -11,6 +13,18 @@ module.exports = function runner(opts) {
   opts.bench = async.apply(async.waterfall, pipe);
 
   counters.preHeatRunCounter(opts, function(err) {
-    funcUtils.always(opts.complete)(err, math.calculate(timer.results));
+    if(err) {
+      funcUtils.always(opts.complete)(err);
+      return;
+    }
+
+    var builder = function(acc, e) {
+      acc[e] = atoll[e](timer.results);
+      return acc;
+    };
+
+    var results = statFunctions.reduce(builder, {});
+
+    funcUtils.always(opts.complete)(null, results);
   });
 }
