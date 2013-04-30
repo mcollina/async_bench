@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "microtime": "~0.3.3",
-    "async": "~0.1.22",
+    "async": "~0.2.7",
     "atoll": "git://github.com/mcollina/atoll.js.git"
   }
 }
