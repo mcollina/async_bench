@@ -1,6 +1,6 @@
 {
   "name": "async_bench",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The benchmark framework designed for node.js callbacks.",
   "main": "index.js",
   "scripts": {
