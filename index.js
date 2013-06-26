@@ -20,7 +20,7 @@ module.exports = function runner(opts) {
 
     var samples = timer.results;
     if (opts.preHeat > 0) {
-      samples = samples.splice(samples.length / 2);
+      samples = samples.splice(opts.preHeat);
     }
 
     var builder = function(acc, e) {

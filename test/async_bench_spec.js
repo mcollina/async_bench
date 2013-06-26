@@ -7,10 +7,10 @@ describe(asyncBench, function() {
     var func = sinon.spy();
     asyncBench({ 
       preHeat: 5, 
-      runs: 0, 
+      runs: 1, 
       bench: funcUtils.wrap(func), 
       complete: function(err, results) {
-        expect(func.callCount).to.equal(5);
+        expect(func.callCount).to.equal(6);
         done();
       }
     });
@@ -20,7 +20,7 @@ describe(asyncBench, function() {
     var func = sinon.spy();
     asyncBench({ 
       preHeat: 5, 
-      runs: 0, 
+      runs: 1,
       reset: funcUtils.wrap(func), 
       complete: function(err, results) {
         expect(func.callCount).to.equal(1);
@@ -104,6 +104,23 @@ describe(asyncBench, function() {
       complete: function(err, results, samples) {
         expect(samples).to.be.instanceof(Array);
         expect(samples).to.have.property("length", 3);
+        done();
+      }
+    });
+  });
+
+  it("should return the samples with different preHeat and run", function(done) {
+    var spy = sinon.spy();
+    asyncBench({ 
+      preHeat: 2, 
+      runs: 5, 
+      setup: funcUtils.wrap(spy),
+      bench: function(cb) {
+        cb();
+      },
+      complete: function(err, results, samples) {
+        expect(samples).to.be.instanceof(Array);
+        expect(samples).to.have.property("length", 5);
         done();
       }
     });
