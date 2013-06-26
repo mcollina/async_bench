@@ -91,4 +91,21 @@ describe(asyncBench, function() {
       }
     });
   });
+
+  it("should return the samples", function(done) {
+    var spy = sinon.spy();
+    asyncBench({ 
+      preHeat: 3, 
+      runs: 3, 
+      setup: funcUtils.wrap(spy),
+      bench: function(cb) {
+        cb();
+      },
+      complete: function(err, results, samples) {
+        expect(samples).to.be.instanceof(Array);
+        expect(samples).to.have.property("length", 3);
+        done();
+      }
+    });
+  });
 });

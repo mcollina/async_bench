@@ -18,13 +18,18 @@ module.exports = function runner(opts) {
       return;
     }
 
+    var samples = timer.results;
+    if (opts.preHeat > 0) {
+      samples = samples.splice(samples.length / 2);
+    }
+
     var builder = function(acc, e) {
-      acc[e] = atoll[e](timer.results);
+      acc[e] = atoll[e](samples);
       return acc;
     };
 
     var results = statFunctions.reduce(builder, {});
 
-    funcUtils.always(opts.complete)(null, results);
+    funcUtils.always(opts.complete)(null, results, samples);
   });
 }
