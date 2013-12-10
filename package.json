@@ -1,6 +1,6 @@
 {
   "name": "async_bench",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "The benchmark framework designed for node.js callbacks.",
   "main": "index.js",
   "scripts": {
@@ -19,14 +19,14 @@
   "author": "Matteo Collina <hello@matteocollina.com>",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "~1.7.2",
-    "chai": "~1.4.0",
-    "sinon": "~1.5.2",
-    "sinon-chai": "~2.2.0"
+    "sinon-chai": "~2.4.0",
+    "sinon": "~1.7.3",
+    "chai": "~1.8.1",
+    "mocha": "~1.15.1"
   },
   "dependencies": {
-    "microtime": "~0.3.3",
-    "async": "~0.2.7",
-    "atoll": "git://github.com/mcollina/atoll.js.git"
+    "microtime": "~0.5.0",
+    "atoll": "~0.7.3",
+    "async": "~0.2.9"
   }
 }
