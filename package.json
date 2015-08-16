@@ -30,6 +30,6 @@
     "async": "~1.4.2"
   },
   "optionalDependencies": {
-    "nan": "~1.8.4"
+    "nan": "~2.0.5"
   }
 }
